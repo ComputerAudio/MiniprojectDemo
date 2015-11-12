@@ -26,10 +26,7 @@ public class DrivingMechanics : MonoBehaviour {
 
     void updateMovement()
     {
-        if (inputSpeed < .001f)
-        {
-            return;
-        }
+        
         Vector3 goalVel = transform.forward * maxSpeed * inputSpeed;
 
         rigid.velocity = Vector3.Lerp(rigid.velocity, goalVel, Time.deltaTime * acceleration);
@@ -37,6 +34,10 @@ public class DrivingMechanics : MonoBehaviour {
 
     void updateRotation()
     {
+        if (Mathf.Abs(inputSpeed) < .001f)
+        {
+            return;
+        }
         float currentRotation = transform.eulerAngles.y;
         float goalRotation = currentRotation + inputTurn * 90;
         Vector3 newDirection = new Vector3(transform.eulerAngles.x, Mathf.MoveTowards(currentRotation, goalRotation, Time.deltaTime * turnRate), transform.eulerAngles.z);
