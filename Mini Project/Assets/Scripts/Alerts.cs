@@ -14,7 +14,10 @@ public class Alerts : MonoBehaviour {
 	public AudioClip myAudioClip_highDrowsiness;
 
 	public float lastPlayedTime_highSnowLevel;
+	public float lastPlayedTime_highDrowsiness;
+
 	public bool isHighSnowLevelPlaying;
+	public bool isHighDrowsinessPlaying;
 	// Use this for initialization
 	void Start () {
 		myAudioSources = GetComponents<AudioSource> (); //grabbing a reference to our AudioSources
@@ -25,7 +28,10 @@ public class Alerts : MonoBehaviour {
 		myAudioSource_highDrowsiness.clip = myAudioClip_highDrowsiness;
 
 		lastPlayedTime_highSnowLevel = 0;
+		lastPlayedTime_highDrowsiness = 0;
+
 		isHighSnowLevelPlaying = false;
+		isHighDrowsinessPlaying = false; 
 	}
 	
 	// Update is called once per frame
@@ -33,6 +39,11 @@ public class Alerts : MonoBehaviour {
 		if (isHighSnowLevelPlaying && (Time.timeSinceLevelLoad - lastPlayedTime_highSnowLevel) > 1.5) {
 			myAudioSource_highSnowLevel.Play ();
 			lastPlayedTime_highSnowLevel = Time.timeSinceLevelLoad;
+		}
+
+		if (isHighDrowsinessPlaying && (Time.timeSinceLevelLoad - lastPlayedTime_highDrowsiness) > 0.75) {
+			myAudioSource_highDrowsiness.Play ();
+			lastPlayedTime_highDrowsiness = Time.timeSinceLevelLoad;
 		}
 	}
 
@@ -46,9 +57,10 @@ public class Alerts : MonoBehaviour {
 	} 
 
 	public void highDrowsinessPressed() {
-		if (!myAudioSource_highDrowsiness.isPlaying) { 
-			myAudioSource_highDrowsiness.Play ();
+		if (!isHighDrowsinessPlaying) { 
+			isHighDrowsinessPlaying = true;
 		} else {
+			isHighDrowsinessPlaying = false;
 			myAudioSource_highDrowsiness.Stop ();
 		}
 	} 
