@@ -74,9 +74,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Assets\AlignWithTruck.cs" />
-    <Compile Include="Assets\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Alerts.cs" />
+    <Compile Include="Assets\Scripts\AlignWithTruck.cs" />
+    <Compile Include="Assets\Scripts\AnimationTrigger.cs" />
+    <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\GameMechanics\DrivingMechanics.cs" />
     <Compile Include="Assets\Scripts\WheelStatus.cs" />
   </ItemGroup>
