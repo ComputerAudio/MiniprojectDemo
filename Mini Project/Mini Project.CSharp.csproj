@@ -78,6 +78,7 @@
     <Compile Include="Assets\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\Alerts.cs" />
     <Compile Include="Assets\Scripts\GameMechanics\DrivingMechanics.cs" />
+    <Compile Include="Assets\Scripts\WheelStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />
 </Project>
