@@ -72,8 +72,10 @@
     <Compile Include="Assets\Scripts\AlignWithTruck.cs" />
     <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
     <Compile Include="Assets\Scripts\FragileIceAlert.cs" />
+    <Compile Include="Assets\Scripts\FragileIceTrigger.cs" />
     <Compile Include="Assets\Scripts\GameMechanics\DrivingMechanics.cs" />
     <Compile Include="Assets\Scripts\SleepUseCase.cs" />
+    <Compile Include="Assets\Scripts\WheelInformation.cs" />
     <Compile Include="Assets\Scripts\WheelStatus.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\SyntaxTree\UnityVS\2015\UnityVS.CSharp.targets" />

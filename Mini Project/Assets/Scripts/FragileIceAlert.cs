@@ -2,8 +2,8 @@
 using System.Collections;
 
 public class FragileIceAlert : MonoBehaviour {
-    public WheelStatus[] leftWheels;
-    public WheelStatus[] rightWheels;
+    public WheelInformation[] leftWheels;
+    public WheelInformation[] rightWheels;
 
     public AudioSource leftASource;
     public AudioSource rightASource;
@@ -17,13 +17,21 @@ public class FragileIceAlert : MonoBehaviour {
 	void Update () {
         float leftStatus = 0;
         float rightStatus = 0;
-        foreach (WheelStatus stat in leftWheels)
+        foreach (WheelInformation stat in leftWheels)
         {
-            leftStatus = Mathf.Max(leftStatus, stat.fragility);
+            leftStatus = Mathf.Max(leftStatus, stat.fragileIce);
         }
-        foreach (WheelStatus stat in rightWheels)
+        foreach (WheelInformation stat in rightWheels)
         {
-            rightStatus = Mathf.Max(rightStatus, stat.fragility);
+            rightStatus = Mathf.Max(rightStatus, stat.fragileIce);
+        }
+        if (leftStatus > .001f)
+        {
+            if (!leftASource.isPlaying)
+            {
+                leftASource.Play();
+            }
+            
         }
         leftASource.volume = leftStatus;
         rightASource.volume = rightStatus;
