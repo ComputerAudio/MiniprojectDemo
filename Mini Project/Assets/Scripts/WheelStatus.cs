@@ -5,11 +5,11 @@ using System.Collections;
 public class WheelStatus : MonoBehaviour {
 	public float fragility;
 
-	Image myWheel;
+	SpriteRenderer myWheel;
 
 	// Use this for initialization
 	void Start () {
-		myWheel = GetComponent<Image> ();
+		myWheel = GetComponent<SpriteRenderer> ();
 	}
 	
 	// Update is called once per frame

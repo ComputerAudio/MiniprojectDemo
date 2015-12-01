@@ -7,12 +7,14 @@ public class DrivingMechanics : MonoBehaviour {
     public float turnRate;
 
     Rigidbody rigid;
+    AudioSource aSource;
     float inputSpeed;
     float inputTurn;
 
     void Awake()
     {
         rigid = GetComponent<Rigidbody>();
+        aSource = GetComponent<AudioSource>();
     }
 
     void Update()
@@ -22,6 +24,8 @@ public class DrivingMechanics : MonoBehaviour {
 
         updateMovement();
         updateRotation();
+
+        aSource.pitch = 1 + rigid.velocity.magnitude / maxSpeed / 1.5f;
     }
 
     void updateMovement()

@@ -78,6 +78,7 @@
     <Compile Include="Assets\Scripts\AlignWithTruck.cs" />
     <Compile Include="Assets\Scripts\AnimationTrigger.cs" />
     <Compile Include="Assets\Scripts\FirstPersonCamera.cs" />
+    <Compile Include="Assets\Scripts\FragileIceAlert.cs" />
     <Compile Include="Assets\Scripts\GameMechanics\DrivingMechanics.cs" />
     <Compile Include="Assets\Scripts\WheelStatus.cs" />
   </ItemGroup>
