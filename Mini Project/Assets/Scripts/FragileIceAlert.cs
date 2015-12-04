@@ -23,6 +23,8 @@ public class FragileIceAlert : MonoBehaviour {
         }
         foreach (WheelInformation stat in rightWheels)
         {
+            print(stat.fragileIce);
+
             rightStatus = Mathf.Max(rightStatus, stat.fragileIce);
         }
         if (leftStatus > .001f)

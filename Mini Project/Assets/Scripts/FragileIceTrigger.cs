@@ -15,6 +15,15 @@ public class FragileIceTrigger : MonoBehaviour {
 
     }
 
+    void OnTriggerExit(Collider collider)
+    {
+        WheelInformation info = collider.GetComponent<WheelInformation>();
+        if (info != null && wheelInformation.Contains(info))
+        {
+            wheelInformation.Remove(info);
+        }
+    }
+
     void Update()
     {
 
@@ -22,11 +31,11 @@ public class FragileIceTrigger : MonoBehaviour {
         foreach (WheelInformation stat in wheelInformation)
         {
             float mag = (stat.transform.position - transform.position).magnitude;
-            if (mag > 20)
+            if (mag > 10)
             {
-                mag = 20;
+                mag = 10;
             }
-            stat.fragileIce = Mathf.Abs(mag / 20 - 1);
+            stat.fragileIce = Mathf.Abs(mag / 10 - 1);
         }
     }
 }
