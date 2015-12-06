@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 
 public class FragileIceTrigger : MonoBehaviour {
+    public SpriteRenderer fragileIceImage;
     ArrayList wheelInformation = new ArrayList();
 
     void OnTriggerEnter(Collider collider)
@@ -22,12 +23,19 @@ public class FragileIceTrigger : MonoBehaviour {
         {
             wheelInformation.Remove(info);
         }
+        if (wheelInformation.Count <= 0)
+        {
+            fragileIceImage.color = Color.white;
+        }
     }
 
     void Update()
     {
 
-        
+        if (wheelInformation.Count > 0)
+        {
+            fragileIceImage.color = Color.red;
+        }
         foreach (WheelInformation stat in wheelInformation)
         {
             float mag = (stat.transform.position - transform.position).magnitude;
