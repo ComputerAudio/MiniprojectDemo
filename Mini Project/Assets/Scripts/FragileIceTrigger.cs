@@ -31,11 +31,11 @@ public class FragileIceTrigger : MonoBehaviour {
         foreach (WheelInformation stat in wheelInformation)
         {
             float mag = (stat.transform.position - transform.position).magnitude;
-            if (mag > 10)
+            if (mag > transform.localScale.x / 2)
             {
-                mag = 10;
+                mag = transform.localScale.x / 2;
             }
-            stat.fragileIce = Mathf.Abs(mag / 10 - 1);
+            stat.fragileIce = Mathf.Abs(mag / (transform.localScale.x / 2) - 1);
         }
     }
 }
