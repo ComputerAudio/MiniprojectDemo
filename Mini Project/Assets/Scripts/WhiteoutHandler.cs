@@ -28,17 +28,33 @@ public class WhiteoutHandler : MonoBehaviour {
         blinkerTimer = Mathf.MoveTowards(blinkerTimer, 0, Time.deltaTime);
         if (snowStormOn)
         {
+            float blinkerDistance = playerRefernce.position.x - transform.position.x;
+            
+
             if (blinkerTimer <= 0)
             {
                 blinkerTimer = speedOfBlinker;
             }
-            if (blinkerTimer <= blinkerOnTime)
+            SpriteRenderer arrowToChange;
+            if (blinkerDistance > 0)
             {
-                leftArrow.color = Color.green;
+                arrowToChange = rightArrow;
             }
             else
             {
-                leftArrow.color = Color.white;
+                arrowToChange = leftArrow;
+            }
+            if (Mathf.Abs(blinkerDistance) < 3)
+            {
+                return;
+            }
+            if (blinkerTimer <= blinkerOnTime)
+            {
+                arrowToChange.color = Color.green;
+            }
+            else
+            {
+                arrowToChange.color = Color.white;
             }
         }
     }
@@ -57,6 +73,9 @@ public class WhiteoutHandler : MonoBehaviour {
         if (collider.tag == "Player")
         {
             snowFallEffect.Stop();
+            snowStormOn = false;
+            rightArrow.color = Color.white;
+            leftArrow.color = Color.white;
         }
 
     }
