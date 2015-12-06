@@ -9,6 +9,9 @@ public class WhiteoutHandler : MonoBehaviour {
     public float blinkerOnTime = 2f;
     public Transform playerRefernce;
     public ParticleSystem snowFallEffect;
+    public AudioSource leftBlinkSound;
+    public AudioSource rightBlinkSound;
+    AudioSource aSource;
     float blinkerTimer;
     bool snowStormOn;
     //bool blinkerOn;
@@ -16,6 +19,7 @@ public class WhiteoutHandler : MonoBehaviour {
     void Start()
     {
         playerRefernce = GameObject.FindGameObjectWithTag("Player").transform;
+        aSource = GetComponent<AudioSource>();
     }
 
 	// Update is called once per frame
@@ -36,21 +40,35 @@ public class WhiteoutHandler : MonoBehaviour {
                 blinkerTimer = speedOfBlinker;
             }
             SpriteRenderer arrowToChange;
+            AudioSource soundToChange;
             if (blinkerDistance > 0)
             {
                 arrowToChange = rightArrow;
+                soundToChange = rightBlinkSound;
             }
             else
             {
                 arrowToChange = leftArrow;
+                soundToChange = leftBlinkSound;
             }
             if (Mathf.Abs(blinkerDistance) < 3)
             {
+                leftBlinkSound.Stop();
+                rightBlinkSound.Stop();
+                leftArrow.color = Color.white;
+                rightArrow.color = Color.white;
                 return;
             }
             if (blinkerTimer <= blinkerOnTime)
             {
                 arrowToChange.color = Color.green;
+                if (!soundToChange.isPlaying)
+                {
+                    soundToChange.Play();
+
+                }
+
+
             }
             else
             {
@@ -65,6 +83,7 @@ public class WhiteoutHandler : MonoBehaviour {
         {
             snowStormOn = true;
             snowFallEffect.Play();
+            aSource.Play();
         }
     }
 
@@ -76,6 +95,7 @@ public class WhiteoutHandler : MonoBehaviour {
             snowStormOn = false;
             rightArrow.color = Color.white;
             leftArrow.color = Color.white;
+            aSource.Stop();
         }
 
     }
