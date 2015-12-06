@@ -8,6 +8,7 @@ public class WhiteoutHandler : MonoBehaviour {
     public float speedOfBlinker = 3f;
     public float blinkerOnTime = 2f;
     public Transform playerRefernce;
+    public ParticleSystem snowFallEffect;
     float blinkerTimer;
     bool snowStormOn;
     //bool blinkerOn;
@@ -47,6 +48,16 @@ public class WhiteoutHandler : MonoBehaviour {
         if (collider.tag == "Player")
         {
             snowStormOn = true;
+            snowFallEffect.Play();
         }
+    }
+
+    void OnTriggerExit(Collider collider)
+    {
+        if (collider.tag == "Player")
+        {
+            snowFallEffect.Stop();
+        }
+
     }
 }
