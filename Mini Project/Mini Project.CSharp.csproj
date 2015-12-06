@@ -76,6 +76,8 @@
     <Compile Include="Assets\Scripts\GameMechanics\DrivingMechanics.cs" />
     <Compile Include="Assets\Scripts\SleepUseCase.cs" />
     <Compile Include="Assets\Scripts\SlipperIceTrigger.cs" />
+    <Compile Include="Assets\Scripts\TemperatureManager.cs" />
+    <Compile Include="Assets\Scripts\TemperatureTrigger.cs" />
     <Compile Include="Assets\Scripts\WheelInformation.cs" />
     <Compile Include="Assets\Scripts\WheelStatus.cs" />
     <Compile Include="Assets\Scripts\WhiteoutHandler.cs" />
