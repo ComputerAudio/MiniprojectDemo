@@ -2,6 +2,7 @@
 using System.Collections;
 
 public class FragileIceAlert : MonoBehaviour {
+    public AudioClip[] clips;
     public WheelInformation[] leftWheels;
     public WheelInformation[] rightWheels;
 
@@ -23,7 +24,7 @@ public class FragileIceAlert : MonoBehaviour {
         }
         foreach (WheelInformation stat in rightWheels)
         {
-            print(stat.fragileIce);
+            
 
             rightStatus = Mathf.Max(rightStatus, stat.fragileIce);
         }
@@ -35,7 +36,34 @@ public class FragileIceAlert : MonoBehaviour {
             }
             
         }
+        if (rightStatus > .001f)
+        {
+            if (!rightASource.isPlaying)
+            {
+                rightASource.Play();
+            }
+        }
+        
+        setAppropriateClip(leftASource, leftStatus);
+        setAppropriateClip(rightASource, rightStatus);
+
         leftASource.volume = leftStatus;
         rightASource.volume = rightStatus;
 	}
+
+    void setAppropriateClip(AudioSource audio, float value)
+    {
+        if (value < 0.25f)
+        {
+            audio.clip = clips[0];
+        }
+        else if (value < .6f)
+        {
+            audio.clip = clips[1];
+        }
+        else
+        {
+            audio.clip = clips[2];
+        }
+    }
 }
